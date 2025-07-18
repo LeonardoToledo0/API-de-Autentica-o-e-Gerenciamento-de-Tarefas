@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+        env:
+          NODE_VERSION: 20
+
+      - name: Build and test
+        run: yarn run test
+        env:
+          NODE_VERSION: 20
+
+      - name: Lint
+        run: yarn run lint
+        env:
+          NODE_VERSION: 20
+
+      - name: Deploy (opcional)
+        run: yarn run deploy
+        env:
+          NODE_VERSION: 20
