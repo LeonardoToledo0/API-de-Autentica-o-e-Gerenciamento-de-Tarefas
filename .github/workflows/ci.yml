@@ -4,30 +4,30 @@ on:
   push:
     branches:
       - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout do código
+        uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: yarn install
-        env:
-          NODE_VERSION: 20
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
-      - name: Build and test
-        run: yarn run test
-        env:
-          NODE_VERSION: 20
+      - name: Instalar dependências
+        run: yarn install --frozen-lockfile
 
-      - name: Lint
-        run: yarn run lint
-        env:
-          NODE_VERSION: 20
+      - name: Rodar build
+        run: yarn build
 
-      - name: Deploy (opcional)
-        run: yarn run deploy
-        env:
-          NODE_VERSION: 20
+      - name: Rodar testes
+        run: yarn test --coverage
