@@ -14,12 +14,12 @@ Construído em **NestJS + TypeORM** e pronto para produção.
 ## 🚀 Tecnologias Utilizadas
 
 <p align="center">
-  <img height="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
-  <img height="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg" />
-  <img height="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg" />
-  <img height="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original-wordmark.svg" />
-  <img height="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg" />
-  <img height="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yarn/yarn-original-wordmark.svg" />
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg" />
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg" />
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original-wordmark.svg" />
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg" />
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yarn/yarn-original-wordmark.svg" />
 </p>
 
 ---
@@ -30,7 +30,7 @@ Construído em **NestJS + TypeORM** e pronto para produção.
 | :---------- | :-------------------------------------------------------- |
 | **Auth**    | Registro & login via **JWT**, refresh‑token opcional      |
 | **Users**   | CRUD de usuários                                          |
-| **To-do**   | Tarefas dos Usuarios                                      |
+| **Todo**    | Tarefas dos Usuarios                                      |
 | **Swagger** | Documentação interativa em **/api** com botão _Authorize_ |
 
 ---
@@ -132,15 +132,15 @@ O backend Conéctar oferece uma API robusta com autenticação via JWT e gestão
 
 ---
 
-### 📘 Todos
+### 📘 Tasks
 
-| Método | Rota          | Quem pode | Descrição               |
-| ------ | ------------- | --------- | ----------------------- |
-| POST   | `/To-dos`     | `usuario` | Cria uma Tarefa         |
-| GET    | `/To-dos`     | `usuario` | Lista todas os Tarefas  |
-| GET    | `/To-dos/:id` | `usuario` | Detalha Tarefa por ID   |
-| PUT.   | `/To-dos/:id` | `usuario` | Atualiza Tarefas por ID |
-| DELETE | `/To-dos/:id` | `usuario` | Deleta a Tarefa         |
+| Método | Rota         | Quem pode | Descrição               |
+| ------ | ------------ | --------- | ----------------------- |
+| POST   | `/tasks`     | `usuario` | Cria uma Tarefa         |
+| GET    | `/tasks`     | `usuario` | Lista todas os Tarefas  |
+| GET    | `/tasks/:id` | `usuario` | Detalha Tarefa por ID   |
+| PUT.   | `/tasks/:id` | `usuario` | Atualiza Tarefas por ID |
+| DELETE | `/tasks/:id` | `usuario` | Deleta a Tarefa         |
 
 ---
 
