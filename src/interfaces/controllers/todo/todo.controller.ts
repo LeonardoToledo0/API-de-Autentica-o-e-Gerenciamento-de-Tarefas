@@ -25,15 +25,15 @@ import { UpdateTodoDTO } from 'src/application/todo/dtos/update-todo.dto';
 import { JwtAuthGuard } from 'src/domain/auth/guards/jwt-auth.guard';
 
 
-@ApiTags('To-dos')
+@ApiTags('Tasks')
 @ApiBearerAuth('Authorization')
-@Controller('to-dos')
+@Controller('tasks')
 @UseGuards(JwtAuthGuard)
 export class TodoController {
     constructor(private readonly todoService: TodoService) { }
 
     @Post()
-    @ApiOperation({ summary: 'Create a new to-do' })
+    @ApiOperation({ summary: 'Create a new tasks' })
     @ApiResponse({
         status: 201,
         description: 'Todo created successfully',
@@ -55,12 +55,12 @@ export class TodoController {
 
 
     @Get(':id')
-    @ApiOperation({ summary: 'Get a to-do by ID' })
-    @ApiResponse({ status: 200, description: 'To-do found', type: Todo })
-    @ApiResponse({ status: 404, description: 'To-do not found' })
+    @ApiOperation({ summary: 'Get a tasks by ID' })
+    @ApiResponse({ status: 200, description: 'Tasks found', type: Todo })
+    @ApiResponse({ status: 404, description: 'Tasks not found' })
     async findOne(@Param('id') id: string): Promise<Todo> {
         const todo = await this.todoService.findById(id);
-        if (!todo) throw new NotFoundException('Todo not found');
+        if (!todo) throw new NotFoundException('Tasks not found');
         return todo;
     }
 
@@ -80,16 +80,16 @@ export class TodoController {
     }
 
     @Put(':id')
-    @ApiOperation({ summary: 'Update a to-do' })
-    @ApiResponse({ status: 200, description: 'To-do updated', type: Todo })
-    @ApiResponse({ status: 404, description: 'To-do not found' })
+    @ApiOperation({ summary: 'Update a Tasks' })
+    @ApiResponse({ status: 200, description: 'Tasks updated', type: Todo })
+    @ApiResponse({ status: 404, description: 'Tasks not found' })
     async update(
         @Param('id') id: string,
         @Body() updateTodoDto: UpdateTodoDTO,
     ): Promise<Todo> {
         const existingTodo = await this.todoService.findById(id);
         if (!existingTodo) {
-            throw new NotFoundException('To-do not found');
+            throw new NotFoundException('Tasks not found');
         }
 
         if (updateTodoDto.title !== undefined) {
@@ -110,16 +110,16 @@ export class TodoController {
     }
 
     @Delete(':id')
-    @ApiOperation({ summary: 'Delete a to-do' })
-    @ApiResponse({ status: 200, description: 'To-do deleted' })
-    @ApiResponse({ status: 404, description: 'To-do not found' })
+    @ApiOperation({ summary: 'Delete a Tasks' })
+    @ApiResponse({ status: 200, description: 'Tasksdeleted' })
+    @ApiResponse({ status: 404, description: 'Tasks not found' })
     async remove(@Param('id') id: string): Promise<{ message: string }> {
         const existingTodo = await this.todoService.findById(id);
         if (!existingTodo) {
-            throw new NotFoundException('Todo not found');
+            throw new NotFoundException('Tasks not found');
         }
 
         await this.todoService.delete(id);
-        return { message: 'Todo deleted successfully' };
+        return { message: 'Tasks deleted successfully' };
     }
 }
