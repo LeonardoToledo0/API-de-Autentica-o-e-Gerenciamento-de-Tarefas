@@ -27,13 +27,14 @@ export class TodoRepository implements ITodoRepository {
         if (!entity) return null;
         return this.toDomain(entity);
     }
-
     async findAllByUser(
         userId: string,
         filter?: { completed?: boolean },
         pagination?: { skip: number; take: number },
     ): Promise<Todo[]> {
-        const query = this.repo.createQueryBuilder('todo').where('todo.userId = :userId', { userId });
+        const query = this.repo.createQueryBuilder('todo')
+            .leftJoinAndSelect('todo.user', 'user')
+            .where('todo.userId = :userId', { userId });
 
         if (filter?.completed !== undefined) {
             query.andWhere('todo.completed = :completed', { completed: filter.completed });
@@ -45,6 +46,8 @@ export class TodoRepository implements ITodoRepository {
         const entities = await query.getMany();
         return entities.map(entity => this.toDomain(entity));
     }
+
+
 
     async update(todo: Todo): Promise<Todo> {
         const todoEntity = this.fromDomain(todo);
