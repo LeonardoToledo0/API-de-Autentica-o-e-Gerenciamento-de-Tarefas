@@ -10,6 +10,7 @@ import {
     Query,
     NotFoundException,
     UseGuards,
+    Req,
 } from '@nestjs/common';
 import {
     ApiTags,
@@ -23,6 +24,7 @@ import { Todo } from 'src/domain/todo/entities/todo.entity';
 import { CreateTodoDTO } from 'src/application/todo/dtos/create-todo.dto';
 import { UpdateTodoDTO } from 'src/application/todo/dtos/update-todo.dto';
 import { JwtAuthGuard } from 'src/domain/auth/guards/jwt-auth.guard';
+import { Request } from 'express';
 
 
 @ApiTags('Tasks')
@@ -39,7 +41,9 @@ export class TodoController {
         description: 'Todo created successfully',
         type: Todo,
     })
-    async create(@Body() createTodoDto: CreateTodoDTO): Promise<Todo> {
+    async create(@Body() createTodoDto: CreateTodoDTO, @Req() req: Request,): Promise<Todo> {
+        const user = req.user as { userId: string };
+        const userId = user.userId;
         const newTodo = new Todo(
             crypto.randomUUID(),
             createTodoDto.title,
@@ -47,7 +51,7 @@ export class TodoController {
             false,
             new Date(),
             new Date(),
-            createTodoDto.userId,
+            userId,
         );
 
         return this.todoService.create(newTodo);
@@ -65,7 +69,7 @@ export class TodoController {
     }
 
     @Get()
-    @ApiOperation({ summary: 'Get all todos for a user' })
+    @ApiOperation({ summary: 'Get all tasks for a user' })
     @ApiQuery({ name: 'userId', required: true })
     @ApiQuery({ name: 'completed', required: false, type: Boolean })
     @ApiQuery({ name: 'skip', required: false, type: Number })
