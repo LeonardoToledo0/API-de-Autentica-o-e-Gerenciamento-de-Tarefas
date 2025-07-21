@@ -4,14 +4,19 @@ on:
   push:
     branches:
       - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout do código
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -22,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build (se necessário)
+      - name: Build 
         run: yarn run build
 
       - name: Run e2e tests
@@ -30,3 +35,4 @@ jobs:
 
       - name: Run lint
         run: yarn run lint
+
