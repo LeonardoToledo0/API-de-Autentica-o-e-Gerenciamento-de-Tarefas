@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { ITodoRepository } from 'src/domain/todo/repository/todo.repository.interface';
-import { Todo } from 'src/domain/todo/entities/todo.entity';
+import { ITodoRepository } from '../../../../src/domain/todo/repository/todo.repository.interface';
+import { Todo } from '../../../../src/domain/todo/entities/todo.entity';
 
 @Injectable()
 export class TodoService {

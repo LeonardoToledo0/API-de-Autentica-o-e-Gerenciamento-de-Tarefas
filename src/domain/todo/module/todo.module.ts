@@ -2,9 +2,9 @@
 
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { TodoRepository } from "src/infrastructure/todo/repository/todo.repository";
-import { TodoEntity } from 'src/infrastructure/todo/entities/todo.orm-entity';
-import { TodoController } from 'src/interfaces/controllers/todo/todo.controller';
+import { TodoRepository } from "../../../../src/infrastructure/todo/repository/todo.repository";
+import { TodoEntity } from '../../../../src/infrastructure/todo/entities/todo.orm-entity';
+import { TodoController } from '../../../../src/interfaces/controllers/todo/todo.controller';
 import { TodoService } from '../service/todo.service';
 
 @Module({

@@ -8,26 +8,25 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'yarn'
+
       - name: Install dependencies
-        run: yarn install
-        env:
-          NODE_VERSION: 20
+        run: yarn install --frozen-lockfile
 
-      - name: Build and test
-        run: yarn run test
-        env:
-          NODE_VERSION: 20
+      - name: Build (se necessário)
+        run: yarn run build
 
-      - name: Lint
+      - name: Run e2e tests
+        run: yarn test:e2e
+
+      - name: Run lint
         run: yarn run lint
-        env:
-          NODE_VERSION: 20
-
-      - name: Deploy (opcional)
-        run: yarn run deploy
-        env:
-          NODE_VERSION: 20

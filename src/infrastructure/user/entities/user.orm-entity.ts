@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-import { TodoEntity } from 'src/infrastructure/todo/entities/todo.orm-entity';
+import { TodoEntity } from '../../../../src/infrastructure/todo/entities/todo.orm-entity';
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 
 @Entity('users')
