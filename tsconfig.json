@@ -18,5 +18,5 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false
   },
-  "include": ["src/**/*", "express.d.ts"]
+  "include": ["src/**/*.ts", "express.d.ts", "test/**/*.ts"]
 }

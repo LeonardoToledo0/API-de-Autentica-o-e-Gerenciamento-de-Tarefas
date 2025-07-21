@@ -19,11 +19,11 @@ import {
     ApiQuery,
     ApiBearerAuth,
 } from '@nestjs/swagger';
-import { TodoService } from 'src/domain/todo/service/todo.service';
-import { Todo } from 'src/domain/todo/entities/todo.entity';
-import { CreateTodoDTO } from 'src/application/todo/dtos/create-todo.dto';
-import { UpdateTodoDTO } from 'src/application/todo/dtos/update-todo.dto';
-import { JwtAuthGuard } from 'src/domain/auth/guards/jwt-auth.guard';
+import { TodoService } from '../../../../src/domain/todo/service/todo.service';
+import { Todo } from '../../../../src/domain/todo/entities/todo.entity';
+import { CreateTodoDTO } from '../../../../src/application/todo/dtos/create-todo.dto';
+import { UpdateTodoDTO } from '../../../../src/application/todo/dtos/update-todo.dto';
+import { JwtAuthGuard } from '../../../../src/domain/auth/guards/jwt-auth.guard';
 import { Request } from 'express';
 
 

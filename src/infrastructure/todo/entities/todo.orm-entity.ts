@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { UserEntity } from 'src/infrastructure/user/entities/user.orm-entity';
+import { UserEntity } from '../../../../src/infrastructure/user/entities/user.orm-entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 

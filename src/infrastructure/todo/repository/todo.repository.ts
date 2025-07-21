@@ -3,8 +3,8 @@ import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { ITodoRepository } from 'src/domain/todo/repository/todo.repository.interface';
-import { Todo } from 'src/domain/todo/entities/todo.entity';
+import { ITodoRepository } from '../../../../src/domain/todo/repository/todo.repository.interface';
+import { Todo } from '../../../../src/domain/todo/entities/todo.entity';
 
 import { UserEntity } from '../../user/entities/user.orm-entity';
 import { TodoEntity } from '../entities/todo.orm-entity';

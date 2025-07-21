@@ -4,6 +4,7 @@ import {
     Post,
     Body,
     UnauthorizedException,
+    HttpCode,
 } from '@nestjs/common';
 import {
     ApiTags,
@@ -12,11 +13,11 @@ import {
     ApiBody,
 } from '@nestjs/swagger';
 
-import { AuthService } from 'src/domain/auth/service/auth.service';
-import { UserService } from 'src/domain/user/service/user.service';
-import { User } from 'src/domain/user/entities/user.entity';
-import { LoginDto } from 'src/domain/auth/dtos/auth.user.dto';
-import { CreateUserDTO } from 'src/application/user/dtos/create-user.dto';
+import { AuthService } from '../../../../src/domain/auth/service/auth.service';
+import { UserService } from '../../../../src/domain/user/service/user.service';
+import { User } from '../../../../src/domain/user/entities/user.entity';
+import { LoginDto } from '../../../../src/domain/auth/dtos/auth.user.dto';
+import { CreateUserDTO } from '../../../../src/application/user/dtos/create-user.dto';
 
 
 
@@ -35,6 +36,7 @@ export class AuthController {
     @Post('login')
     @ApiOperation({ summary: 'User login' })
     @ApiBody({ type: LoginDto })
+    @HttpCode(200)
     @ApiResponse({
         status: 200,
         description: 'User logged in successfully',
@@ -50,6 +52,7 @@ export class AuthController {
     }
 
     @Post('user')
+    @HttpCode(201)
     @ApiOperation({ summary: 'Create a new user' })
     @ApiBody({ type: CreateUserDTO })
     @ApiResponse({ status: 201, description: 'User created successfully.', type: User })

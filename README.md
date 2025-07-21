@@ -50,7 +50,7 @@ Construído em **NestJS + TypeORM** e pronto para produção.
 
 ```bash
 git https://github.com/LeonardoToledo0/API-de-Autentica-o-e-Gerenciamento-de-Tarefas.git
-cd desafio-replic
+cd API-de-Autentica-o-e-Gerenciamento-de-Tarefas
 yarn
 cp .env.example .env
 ```
@@ -68,6 +68,7 @@ DB_PORT=3306
 DB_USERNAME=root
 DB_PASSWORD=
 DB_DATABASE=todo_db
+NODE_ENV=production
 
 
 ```
@@ -147,7 +148,7 @@ O backend Conéctar oferece uma API robusta com autenticação via JWT e gestão
 ## 🧪 Testes
 
 ```bash
-yarn test
+yarn test:e2e
 ```
 
 ## 📃 Documentação Swagger
@@ -155,7 +156,7 @@ yarn test
 <!-- ![Swagger UI](./assets/swagger.png) -->
 
 Disponível em:  
-🔗 [`http://localhost:3000/api`](http://localhost:3000/api)
+🔗 [`http://localhost:8000/api`](http://localhost:8000/api)
 
 Inclui:
 

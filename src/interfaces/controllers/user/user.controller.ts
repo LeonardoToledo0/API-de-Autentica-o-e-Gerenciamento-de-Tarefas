@@ -2,10 +2,10 @@
 import { Controller, Get, Put, Delete, Body, Param, NotFoundException, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam, ApiBearerAuth } from '@nestjs/swagger';
 
-import { UpdateUserDTO } from 'src/application/user/dtos/update-user.dto';
-import { UserService } from 'src/domain/user/service/user.service';
-import { User } from 'src/domain/user/entities/user.entity';
-import { JwtAuthGuard } from 'src/domain/auth/guards/jwt-auth.guard';
+import { UpdateUserDTO } from '../../../../src/application/user/dtos/update-user.dto';
+import { UserService } from '../../../../src/domain/user/service/user.service';
+import { User } from '../../../../src/domain/user/entities/user.entity';
+import { JwtAuthGuard } from '../../../../src/domain/auth/guards/jwt-auth.guard';
 
 
 @ApiBearerAuth('Authorization')
