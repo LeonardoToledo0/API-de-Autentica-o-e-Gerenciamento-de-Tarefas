@@ -6,7 +6,7 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: 'http://localhost:3000',
+    origin: true,
     credentials: true,
   });
   app.useGlobalPipes(
@@ -18,7 +18,7 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('API To-do')
+    .setTitle('API Tasks')
     .setDescription('API de gerenciamento de tarefas com NestJS')
     .setVersion('1.0')
     .addBearerAuth(
